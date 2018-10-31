@@ -62,6 +62,39 @@ void InsertSort(T *arr,int n){
     }
 }
 
+/* 使用函数模板来实现快速排序，选取最后一个元素作为基准
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void _QuickSort(T *arr,int s,int d){
+    if(s >= d)return;
+    int i,j;
+    T tmp;
+    for(i=s,j=s;j<d;++j){
+        if(arr[j] < arr[d]){
+            //if(i != j){
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            //}
+            ++i;
+        }
+    }
+    tmp = arr[i];
+    arr[i] = arr[d];
+    arr[d] = tmp;
+    _QuickSort(arr,s,i-1);
+    _QuickSort(arr,i+1,d);
+}
+
+/* 使用函数模板来实现快速排序，选取最后一个元素作为基准，包裹函数
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void QuickSort(T *arr,int n){
+    _QuickSort(arr,0,n-1);
+}
+
 class A{
 public:
     int id;

@@ -18,7 +18,8 @@ int main()
     //sort
     //BubbleSort(arrA,3);
     //SelectSort(arrA,3);
-    InsertSort(arrA,3);
+    //InsertSort(arrA,3);
+    QuickSort(arrA,3);
 
     //print
     cout << "sorted arrA\n";
@@ -39,7 +40,8 @@ int main()
     //sort
     //BubbleSort(arrdbl,N);
     //SelectSort(arrdbl,N);
-    InsertSort(arrdbl,N);
+    //InsertSort(arrdbl,N);
+    QuickSort(arrdbl,N);
 
     //print
     cout << "sorted arrdbl\n";

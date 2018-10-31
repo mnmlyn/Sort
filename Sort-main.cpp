@@ -20,7 +20,8 @@ int main()
     //SelectSort(arrA,3);
     //InsertSort(arrA,3);
     //QuickSort(arrA,3);
-    QuickSort_RandomBase(arrA,3);
+    //QuickSort_RandomBase(arrA,3);
+    HeapSort(arrA,3);
 
     //print
     cout << "sorted arrA\n";
@@ -43,7 +44,8 @@ int main()
     //SelectSort(arrdbl,N);
     //InsertSort(arrdbl,N);
     //QuickSort(arrdbl,N);
-    QuickSort_RandomBase(arrdbl,N);
+    //QuickSort_RandomBase(arrdbl,N);
+    HeapSort(arrdbl,N);
 
     //print
     cout << "sorted arrdbl\n";

@@ -131,6 +131,66 @@ void QuickSort_RandomBase(T *arr,int n){
     _QuickSort_RandomBase(arr,0,n-1);
 }
 
+/* 使用函数模板来实现堆排序，堆的定义
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+class Heap{
+    public:
+    int size;
+    int cap;
+    T *arr;
+    Heap(T *_arr,int n):size(n),cap(n),arr(_arr){}
+};
+
+/* 使用函数模板来实现堆排序，调整堆
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void HeapAdjust(Heap<T> &heap,int i){
+    int lgst = i;
+    int left = 2*i + 1;
+    int right = 2*i + 2;
+    T tmp;
+    if(heap.size > left && heap.arr[lgst] < heap.arr[left])
+        lgst = left;
+    if(heap.size > right && heap.arr[lgst] < heap.arr[right])
+        lgst = right;
+    if(lgst != i){
+        tmp = heap.arr[lgst];
+        heap.arr[lgst] = heap.arr[i];
+        heap.arr[i] = tmp;
+        HeapAdjust(heap,lgst);
+    }
+}
+
+/* 使用函数模板来实现堆排序，建堆
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void HeapInit(Heap<T> &heap){
+    int i;
+    for(i=(heap.size-1)/2;i>=0;--i){
+        HeapAdjust(heap,i);
+    }
+}
+
+/* 使用函数模板来实现堆排序，排序
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void HeapSort(T *arr,int n){
+    Heap<T> heap(arr,n);
+    HeapInit(heap);
+    T tmp;
+    while(--heap.size){
+        tmp = heap.arr[heap.size];
+        heap.arr[heap.size] = heap.arr[0];
+        heap.arr[0] = tmp;
+        HeapAdjust(heap,0);
+    }
+}
+
 class A{
 public:
     int id;

@@ -16,7 +16,7 @@ int main()
     cout << endl;
 
     //sort
-    BubbleSort(arrA,3);
+    SelectSort(arrA,3);
 
     //print
     cout << "sorted arrA\n";
@@ -35,7 +35,7 @@ int main()
     cout << endl;
 
     //sort
-    BubbleSort(arrdbl,N);
+    SelectSort(arrdbl,N);
 
     //print
     cout << "sorted arrdbl\n";

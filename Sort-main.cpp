@@ -16,7 +16,9 @@ int main()
     cout << endl;
 
     //sort
-    SelectSort(arrA,3);
+    //BubbleSort(arrA,3);
+    //SelectSort(arrA,3);
+    InsertSort(arrA,3);
 
     //print
     cout << "sorted arrA\n";
@@ -35,7 +37,9 @@ int main()
     cout << endl;
 
     //sort
-    SelectSort(arrdbl,N);
+    //BubbleSort(arrdbl,N);
+    //SelectSort(arrdbl,N);
+    InsertSort(arrdbl,N);
 
     //print
     cout << "sorted arrdbl\n";

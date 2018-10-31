@@ -43,6 +43,22 @@ void SelectSort(T *arr,int n){
     }
 }
 
+template <typename T>
+void InsertSort(T *arr,int n){
+    int i,j;
+    T tmp;
+    for(i=1;i<n;++i){
+        tmp = arr[i];
+        for(j=i-1;j>=0;--j){
+            if(tmp < arr[j]){
+                arr[j+1] = arr[j];
+            }
+            else break;
+        }
+        arr[j+1] = tmp;
+    }
+}
+
 class A{
 public:
     int id;

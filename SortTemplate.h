@@ -1,7 +1,8 @@
 #ifndef _SORT_TEMPLATE_H_
 #define _SORT_TEMPLATE_H_
-#include <stdlib.h>//for srand
+#include <stdlib.h>//for srand malloc free
 #include <time.h>//for time
+#include <string.h>//for memcpy
 
 /* 使用函数模板来实现冒泡排序
  * 类型T应该有无参构造函数，operator<运算符，赋值运算符
@@ -189,6 +190,50 @@ void HeapSort(T *arr,int n){
         heap.arr[0] = tmp;
         HeapAdjust(heap,0);
     }
+}
+
+/* 使用函数模板来实现归并排序，合并操作
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void _Merge(T *arr,int s,int mid,int d){
+    int n1 = mid - s;
+    int n2 = d - mid + 1;
+    T *arr1 = (T*)malloc(sizeof(T)*n1);
+    T *arr2 = (T*)malloc(sizeof(T)*n2);
+    memcpy(arr1,arr+s,sizeof(T)*n1);
+    memcpy(arr2,arr+mid,sizeof(T)*n2);
+    int i=0,j=0,k;
+    for(k=s;i<n1 && j<n2;++k){
+        if(arr1[i] < arr2[j])
+            arr[k] = arr1[i++];
+        else 
+            arr[k] = arr2[j++];
+    }
+    if(i >= n1)memcpy(arr+k,arr2+j,sizeof(T)*(n2-j));
+    else if(j >= n2)memcpy(arr+k,arr1+i,sizeof(T)*(n1-i));
+    free(arr1);
+    free(arr2);
+}
+
+/* 使用函数模板来实现归并排序
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void _MergeSort(T *arr,int s,int d){
+    if(s >= d)return;
+    int mid = (s+d)/2;
+    _MergeSort(arr,s,mid);
+    _MergeSort(arr,mid+1,d);
+    _Merge(arr,s,mid+1,d);
+}
+
+/* 使用函数模板来实现归并排序，包裹函数
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void MergeSort(T *arr,int n){
+    _MergeSort(arr,0,n-1);
 }
 
 class A{

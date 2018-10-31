@@ -21,7 +21,8 @@ int main()
     //InsertSort(arrA,3);
     //QuickSort(arrA,3);
     //QuickSort_RandomBase(arrA,3);
-    HeapSort(arrA,3);
+    //HeapSort(arrA,3);
+    MergeSort(arrA,3);
 
     //print
     cout << "sorted arrA\n";
@@ -45,7 +46,8 @@ int main()
     //InsertSort(arrdbl,N);
     //QuickSort(arrdbl,N);
     //QuickSort_RandomBase(arrdbl,N);
-    HeapSort(arrdbl,N);
+    //HeapSort(arrdbl,N);
+    MergeSort(arrdbl,N);
 
     //print
     cout << "sorted arrdbl\n";

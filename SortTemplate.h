@@ -1,5 +1,7 @@
 #ifndef _SORT_TEMPLATE_H_
 #define _SORT_TEMPLATE_H_
+#include <stdlib.h>//for srand
+#include <time.h>//for time
 
 /* 使用函数模板来实现冒泡排序
  * 类型T应该有无参构造函数，operator<运算符，赋值运算符
@@ -62,12 +64,11 @@ void InsertSort(T *arr,int n){
     }
 }
 
-/* 使用函数模板来实现快速排序，选取最后一个元素作为基准
+/* 使用函数模板来实现快速排序，将s到d之间的元素，变为以d处值为基准，小的在左，大的在右
  * 类型T应该有无参构造函数，operator<运算符，赋值运算符
  */
 template <typename T>
-void _QuickSort(T *arr,int s,int d){
-    if(s >= d)return;
+int _QuickSort_BaseSort(T *arr,int s,int d){
     int i,j;
     T tmp;
     for(i=s,j=s;j<d;++j){
@@ -83,6 +84,16 @@ void _QuickSort(T *arr,int s,int d){
     tmp = arr[i];
     arr[i] = arr[d];
     arr[d] = tmp;
+    return i;
+}
+
+/* 使用函数模板来实现快速排序，选取最后一个元素作为基准
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void _QuickSort(T *arr,int s,int d){
+    if(s >= d)return;
+    int i = _QuickSort_BaseSort(arr,s,d);
     _QuickSort(arr,s,i-1);
     _QuickSort(arr,i+1,d);
 }
@@ -93,6 +104,31 @@ void _QuickSort(T *arr,int s,int d){
 template <typename T>
 void QuickSort(T *arr,int n){
     _QuickSort(arr,0,n-1);
+}
+
+/* 使用函数模板来实现快速排序，随机选取一个元素作为基准
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void _QuickSort_RandomBase(T *arr,int s,int d){
+    if(s >= d)return;
+    srand(time(0));
+    int basei = rand()%(d-s+1) + s;
+    T tmp;
+    tmp = arr[basei];
+    arr[basei] = arr[d];
+    arr[d] = tmp;
+    int i = _QuickSort_BaseSort(arr,s,d);
+    _QuickSort_RandomBase(arr,s,i-1);
+    _QuickSort_RandomBase(arr,i+1,d);
+}
+
+/* 使用函数模板来实现快速排序，随机选取一个元素作为基准，包裹函数
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
+template <typename T>
+void QuickSort_RandomBase(T *arr,int n){
+    _QuickSort_RandomBase(arr,0,n-1);
 }
 
 class A{

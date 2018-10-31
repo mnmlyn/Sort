@@ -3,9 +3,46 @@
 
 #define N 10
 
+
 int main()
 {
     using namespace std;
+
+    A arrA[3] = {4,7,5};
+
+    //print
+    cout << "not sort arrA\n";
+    for(A x:arrA)cout << x.id << " ";
+    cout << endl;
+
+    //sort
+    BubbleSort(arrA,3);
+
+    //print
+    cout << "sorted arrA\n";
+    for(A x:arrA)cout << x.id << " ";
+    cout << endl;
+
+
+    double arrdbl[N];
+    //init
+    srand(1);
+    for(double &x:arrdbl)x=rand()%100/10.0;
+
+    //print
+    cout << "not sort arrdbl\n";
+    for(double x:arrdbl)cout << x << " ";
+    cout << endl;
+
+    //sort
+    BubbleSort(arrdbl,N);
+
+    //print
+    cout << "sorted arrdbl\n";
+    for(double x:arrdbl)cout << x << " ";
+    cout << endl;
+
+
 
     int arr[N]={0};
 

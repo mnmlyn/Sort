@@ -6,6 +6,8 @@
 void BubbleSort(int *arr,int n);
 //冒泡排序-优化-无交换直接退出
 void BubbleSort_noexchangeexit(int *arr,int n);
+//使用函数模板来实现冒泡排序
+#include "../001.BubbleSortTemplate.h"
 
 //选择排序
 void SelectSort(int *arr,int n);

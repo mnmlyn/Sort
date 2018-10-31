@@ -2,7 +2,7 @@
 #define _SORT_TEMPLATE_H_
 
 /* 使用函数模板来实现冒泡排序
- * 类型T应该有无参构造函数，operator<运算符，复制构造函数
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
  */
 template <typename T>
 void BubbleSort(T *arr,int n){
@@ -23,7 +23,7 @@ void BubbleSort(T *arr,int n){
 }
 
 /* 使用函数模板来实现选择排序
- * 类型T应该有无参构造函数，operator<运算符，复制构造函数
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
  */
 template <typename T>
 void SelectSort(T *arr,int n){
@@ -43,6 +43,9 @@ void SelectSort(T *arr,int n){
     }
 }
 
+/* 使用函数模板来实现插入排序
+ * 类型T应该有无参构造函数，operator<运算符，赋值运算符
+ */
 template <typename T>
 void InsertSort(T *arr,int n){
     int i,j;
